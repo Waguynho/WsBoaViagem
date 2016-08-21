@@ -100,13 +100,6 @@ public class ViagemActivity extends Activity {
 
 	}
 
-	@Override
-	protected Dialog onCreateDialog(int id) {
-
-		this.id_data = id;
-
-		return null;
-
-	}
+	
 
 }
