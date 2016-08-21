@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ws BoaViagem</string>
+    <string name="erro_autenticao">Usuário ou senha inválidos</string>
+    <string name="entrar">Entrar</string>
+    <string name="senha">Senha</string>
+    <string name="usuario">Usuário</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="novo_gasto">Novo Gasto</string>
+    <string name="nova_viagem">Nova Viagem</string>
+    <string name="minhas_viagens">Viagens</string>
+    <string name="destino">Destino</string>
+    <string name="tipo_da_viagem">Tipo Viagem</string>
+    <string name="negocios">Negócios</string>
+    <string name="lazer">Lazer</string>
+    <string name="data_da_saida">Saída</string>
+    <string name="data_da_chegada">Chegada</string>
+    <string name="orcamento">Orçamento</string>
+    <string name="selecione">Selecione</string>
+    <string name="valor">Valor</string>
+    <string name="data">Data</string>
+    <string name="salvar">Salvar</string>
+    <string name="local">Local</string>
+    <string name="descricao">Descrição</string>
+    <string name="gastei">Gastei</string>
+    <string name="quantidade_de_pessoas">Qtd. Pessoas</string>
+
+</resources>
