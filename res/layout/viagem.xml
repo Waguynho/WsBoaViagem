@@ -89,6 +89,33 @@
         <Button
             android:onClick="salvarViagem"
             android:text="@string/salvar" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/novo_gasto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:clickable="true"
+                android:drawableTop="@drawable/menu_novo"
+                android:onClick=""
+                android:text="Novo Gasto"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/remover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:clickable="true"
+                android:drawableTop="@drawable/menu_remover"
+                android:onClick=""
+                android:text="Remover"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </TableRow>
     </TableLayout>
 
 </ScrollView>

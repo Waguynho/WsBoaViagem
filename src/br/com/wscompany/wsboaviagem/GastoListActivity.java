@@ -8,8 +8,10 @@ import java.util.Map;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleAdapter.ViewBinder;
@@ -36,6 +38,9 @@ public class GastoListActivity extends ListActivity implements
 		setListAdapter(adapter);
 
 		getListView().setOnItemClickListener(this);
+		
+		// registramos aqui o novo menu de contexto
+		registerForContextMenu(getListView());
 
 	}
 
@@ -111,4 +116,20 @@ public class GastoListActivity extends ListActivity implements
 
 		}
 	}
+
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.remover) {
+			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+					.getMenuInfo();
+			gastos.remove(info.position);
+			getListView().invalidateViews();
+			dataAnterior = "";
+			// remover do banco de dados
+			return true;
+		}
+		return super.onContextItemSelected(item);
+	}
+
 }

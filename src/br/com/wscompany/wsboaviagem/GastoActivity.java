@@ -2,17 +2,22 @@ package br.com.wscompany.wsboaviagem;
 
 import java.util.Calendar;
 
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-
 
 public class GastoActivity extends Activity {
 
@@ -37,6 +42,8 @@ public class GastoActivity extends Activity {
 						android.R.layout.simple_spinner_item);
 		categoria = (Spinner) findViewById(R.id.categoria);
 		categoria.setAdapter(array_adapter);
+
+	
 
 	}
 
@@ -63,5 +70,14 @@ public class GastoActivity extends Activity {
 			dataGasto.setText(dia + "/" + (mes + 1) + "/" + ano);
 		}
 	};
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.gasto_menu, menu);
+	}
+
+	
 
 }

@@ -22,8 +22,7 @@ public class MainActivity extends Activity {
 		senha = (EditText) findViewById(R.id.senha);
 	}
 
-	public void entrarOnClick(View v) {
-		
+	public void entrarOnClick(View v) {	
 		
 		
 
