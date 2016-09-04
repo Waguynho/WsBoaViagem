@@ -21,6 +21,8 @@ public class ViagemListActivity extends ListActivity implements
 		OnItemClickListener, OnClickListener {
 
 	private AlertDialog alertDialog;
+	private AlertDialog dialogConfirmacao;
+
 	private int viagemSelecionada;
 
 	private List<Map<String, Object>> viagens;
@@ -37,6 +39,8 @@ public class ViagemListActivity extends ListActivity implements
 		getListView().setOnItemClickListener(this);
 
 		this.alertDialog = criaAlertDialog();
+
+		this.dialogConfirmacao = criaDialogConfirmacao();
 
 	}
 
@@ -75,7 +79,7 @@ public class ViagemListActivity extends ListActivity implements
 		this.viagemSelecionada = position;
 		alertDialog.show();
 
-		//startActivity(new Intent(this, GastoListActivity.class));
+		// startActivity(new Intent(this, GastoListActivity.class));
 
 	}
 
@@ -92,13 +96,18 @@ public class ViagemListActivity extends ListActivity implements
 			startActivity(new Intent(this, GastoListActivity.class));
 			break;
 		case 3:
-			viagens.remove(this.viagemSelecionada);
+			dialogConfirmacao.show();
+			break;
+		case DialogInterface.BUTTON_POSITIVE:
+			viagens.remove(viagemSelecionada);
 			getListView().invalidateViews();
 			break;
+		case DialogInterface.BUTTON_NEGATIVE:
+			dialogConfirmacao.dismiss();
+			break;
 		}
-	}
 
-	
+	}
 
 	private AlertDialog criaAlertDialog() {
 		final CharSequence[] items = { getString(R.string.editar),
@@ -108,6 +117,14 @@ public class ViagemListActivity extends ListActivity implements
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.opcoes);
 		builder.setItems(items, this);
+		return builder.create();
+	}
+
+	private AlertDialog criaDialogConfirmacao() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(R.string.confirmacao_exclusao_viagem);
+		builder.setPositiveButton(getString(R.string.sim), this);
+		builder.setNegativeButton(getString(R.string.nao), this);
 		return builder.create();
 	}
 

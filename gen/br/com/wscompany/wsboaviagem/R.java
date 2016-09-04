@@ -73,6 +73,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int categoria=0x7f050018;
         public static final int configuracoes=0x7f050005;
+        public static final int confirmacao_exclusao_viagem=0x7f050021;
         public static final int data=0x7f050012;
         public static final int data_da_chegada=0x7f05000e;
         public static final int data_da_saida=0x7f05000d;
@@ -86,6 +87,7 @@ public final class R {
         public static final int lazer=0x7f05000c;
         public static final int local=0x7f050014;
         public static final int minhas_viagens=0x7f050008;
+        public static final int nao=0x7f050020;
         public static final int negocios=0x7f05000b;
         public static final int nova_viagem=0x7f050007;
         public static final int novo_gasto=0x7f050006;
@@ -98,6 +100,7 @@ public final class R {
         public static final int salvar=0x7f050013;
         public static final int selecione=0x7f050010;
         public static final int senha=0x7f050003;
+        public static final int sim=0x7f05001f;
         public static final int tipo_da_viagem=0x7f05000a;
         public static final int usuario=0x7f050004;
         public static final int valor=0x7f050011;
