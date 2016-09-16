@@ -14,11 +14,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.SimpleAdapter.ViewBinder;
+
 
 public class ViagemListActivity extends ListActivity implements
-		OnItemClickListener, OnClickListener {
+		OnItemClickListener, OnClickListener, ViewBinder {
 
 	private AlertDialog alertDialog;
 	private AlertDialog dialogConfirmacao;
@@ -31,10 +33,15 @@ public class ViagemListActivity extends ListActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		String[] de = { "imagem", "destino", "data", "total" };
-		int[] para = { R.id.tipoViagem, R.id.destino, R.id.data, R.id.valor };
+		String[] de = { "imagem", "destino", "data", "total", "barraProgresso" };
+
+		int[] para = { R.id.tipoViagem, R.id.destino, R.id.data, R.id.valor, R.id.barraProgresso };
+
 		SimpleAdapter adapter = new SimpleAdapter(this, listarViagens(),
 				R.layout.lista_viagem, de, para);
+		
+		adapter.setViewBinder(this);//deve ficar apos a declaração do adapter. É usado qdo houver uma progress bar do tipo determinada. ViewBinder deve ser implementada e esta linha que faz executar de fato o metodo setViewValue. 
+		
 		setListAdapter(adapter);
 		getListView().setOnItemClickListener(this);
 
@@ -53,13 +60,16 @@ public class ViagemListActivity extends ListActivity implements
 		item.put("destino", "São Paulo");
 		item.put("data", "02/02/2012 a 04/02/2012");
 		item.put("total", "Gasto total R$ 314,98");
+		item.put("barraProgresso", new Double[] { 500.0, 450.0, 314.98 });
+		//item.put("barraProgresso", new Double[] { 314.98});
 		viagens.add(item);
 
 		item = new HashMap<String, Object>();
 		item.put("imagem", R.drawable.ferias);
 		item.put("destino", "Maceió");
 		item.put("data", "14/05/2012 a 22/05/2012");
-		item.put("total", "Gasto total R$ 25834,67");
+		item.put("total", "Gasto total R$ 258,67");
+		item.put("barraProgresso", new Double[] { 500.0, 450.0, 258.67 });
 		viagens.add(item);
 
 		item = new HashMap<String, Object>();
@@ -67,6 +77,7 @@ public class ViagemListActivity extends ListActivity implements
 		item.put("destino", "Belo Horizonte");
 		item.put("data", "15/08/2012 a 22/12/2012");
 		item.put("total", "Gasto total R$ 334,69");
+		item.put("barraProgresso", new Double[] { 500.0, 450.0, 334.69 });
 		viagens.add(item);
 
 		return this.viagens;
@@ -128,4 +139,25 @@ public class ViagemListActivity extends ListActivity implements
 		return builder.create();
 	}
 
+	@Override
+	public boolean setViewValue(View view, Object data,	String textRepresentation) {
+		if (view.getId() == R.id.barraProgresso) {
+			Double valores[] = (Double[]) data;
+			
+			ProgressBar progressBar = (ProgressBar) view;
+			
+			int valor_maximo = valores[0].intValue();
+			progressBar.setMax(valor_maximo);
+			
+			int valor_secundario = valores[1].intValue();
+			progressBar.setSecondaryProgress(valor_secundario);
+			
+			int valor_progresso = valores[2].intValue();
+			progressBar.setProgress(valor_progresso);
+			return true;
+
+		}
+		return false;
+
+	}
 }
