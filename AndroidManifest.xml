@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name=".DashboardActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".ViagemActivity" />
         <activity android:name=".ViagemListActivity" />
         <activity android:name=".GastoActivity" />
         <activity android:name=".GastoListActivity" />
+         <activity android:name=".ConfiguracoesActivity" />
     </application>
 
 </manifest>
